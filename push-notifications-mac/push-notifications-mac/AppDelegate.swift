@@ -1,10 +1,10 @@
 import Cocoa
-import PushNotifications
+import EventflitPushNotifications
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    let pushNotifications = PushNotifications.shared
+    let pushNotifications = EventflitPushNotifications.shared
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.pushNotifications.start(appId: "97c56dfe-58f5-408b-ab3a-158e51a860f2")

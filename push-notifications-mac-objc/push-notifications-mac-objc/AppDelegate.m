@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-@import PushNotifications;
+@import EventflitPushNotifications;
 
 @interface AppDelegate ()
 
@@ -8,14 +8,14 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [[PushNotifications shared] startWithappId:@"f918950d-476d-4649-b38e-6cc8d30e0827"];
-    [[PushNotifications shared] registerForRemoteNotifications];
+    [[EventflitPushNotifications shared] startWithAppId:@"f918950d-476d-4649-b38e-6cc8d30e0827"];
+    [[EventflitPushNotifications shared] registerForRemoteNotifications];
 }
 
 - (void)application:(NSApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [[PushNotifications shared] registerDeviceToken:deviceToken completion:^{
+    [[EventflitPushNotifications shared] registerDeviceToken:deviceToken completion:^{
         NSError *anyError;
-        [[PushNotifications shared] subscribeWithInterest:@"hello" error:&anyError completion:^{
+        [[EventflitPushNotifications shared] subscribeWithInterest:@"hello" error:&anyError completion:^{
             if (anyError) {
                 NSLog(@"Error: %@", anyError);
             }
@@ -27,7 +27,7 @@
 }
 
 - (void)application:(NSApplication *)application didReceiveRemoteNotification:(NSDictionary<NSString *,id> *)userInfo {
-    [[PushNotifications shared] handleNotificationWithUserInfo:userInfo];
+    [[EventflitPushNotifications shared] handleNotificationWithUserInfo:userInfo];
     NSLog(@"%@", userInfo);
 }
 

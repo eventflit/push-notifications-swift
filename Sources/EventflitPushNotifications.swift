@@ -7,7 +7,7 @@ import NotificationCenter
 #endif
 import Foundation
 
-@objc public final class PushNotifications: NSObject {
+@objc public final class EventflitPushNotifications: NSObject {
     private let session = URLSession.shared
     private let serialQueue = DispatchQueue(label: "com.eventflit.pushnotifications.sdk")
     private let host = "https://push.eventflit.com"
